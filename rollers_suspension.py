@@ -344,7 +344,6 @@ class rollers_suspension:
         ##########################
         BoundarySettings = self.config['Boundary Settings']
         self.boundary_circle_on = BoundarySettings.getboolean('boundary_circle_on')
-        self.boundary_rectangle_on= BoundarySettings.getboolean('boundary_rectangle_on')
 
         ###################
         # Input Settings  #
@@ -469,9 +468,9 @@ class rollers_suspension:
         self.init_particles()
 
         #self.place_single_roller()
-        #self.place_two_rollers()
+        self.place_two_rollers()
         #self.place_three_rollers()
-        self.load_initial_config()
+        #self.load_initial_config()
 
         self.load_wall_particles()
 
@@ -598,7 +597,7 @@ class rollers_suspension:
         load user-defined initial particles configuration
         '''
         # lattice
-        particles_pos = self.place_particles_lattice()
+        #particles_pos = self.place_particles_lattice()
         # torus
         #particles_pos = self.place_particles_torus()
         # torus - linear gradient
