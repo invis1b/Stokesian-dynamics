@@ -79,6 +79,9 @@ class rollers_interactions:
         self.bc_circ_strength = 1000 * 1
         self.bc_circ_depth = system.radius * 2.0
 
+        self.boundary_rectangle_on=system.boundary_rectangle_on
+        self.bc_rectangle1=0
+        self.bc_rectangle2=20
         self.enforce2D = system.enforce2D
 
         # create data layout
@@ -492,6 +495,16 @@ class rollers_interactions:
                     self.boundary_circ_normal(r_vec, force)
                     if ti.static(self.bc_circ_reflect_dipole_on == True):
                         self.boundary_reflect_dipole(i, r_vec)
+            if ti.static(self.boundary_rectangle_on==True):
+                r1=0
+                r2=0
+                if ti.static(self.enforce2D == True):
+                    r1= self.pos[i][1] - self.bc_rectangle1
+                    if r1<self.particle_radius:
+                        self.force[i][1]+=10*(self.particle_radius-r1)
+                    r2= self.bc_rectangle1-self.pos[i][1]
+                    if r2<self.particle_radius:
+                        self.force[i][1]+=-10*(self.particle_radius-r2)
 
             # update i-th particle
             for k in ti.static(range(self.dim)):
