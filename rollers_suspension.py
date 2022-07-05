@@ -468,13 +468,13 @@ class rollers_suspension:
         self.init_particles()
 
         #self.place_single_roller()
-        self.place_two_rollers()
+        #self.place_two_rollers()
         #self.place_three_rollers()
-        #self.load_initial_config()
+        self.load_initial_config()
 
-        self.load_wall_particles()
+        #self.load_wall_particles()
 
-        self.activate_wall_particles()
+        #self.activate_wall_particles()
 
         # initialize interactions
         self.interactions.init()
@@ -597,13 +597,13 @@ class rollers_suspension:
         load user-defined initial particles configuration
         '''
         # lattice
-        #particles_pos = self.place_particles_lattice()
+        particles_pos = self.place_particles_lattice()
         # torus
         #particles_pos = self.place_particles_torus()
         # torus - linear gradient
         #particles_pos,particles_dipole = self.place_particles_torus_gradient()
         # from file
-        particles_pos = self.place_particles_fromfile()
+        #particles_pos = self.place_particles_fromfile()
         # update particles position
         self.pos.from_numpy(particles_pos)
         #self.dipole.from_numpy(particles_dipole)
